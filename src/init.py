@@ -1,3 +1,3 @@
-from fake_useragent import UserAgent
+from loadSpec import load_specialization
 
-ua = UserAgent()
+specializations = load_specialization()
