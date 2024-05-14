@@ -1,30 +1,29 @@
-import json
-import requests
-import asyncio
-
-from bs4 import BeautifulSoup
-from pathlib import Path
-
-from init import ua
-from functions_for_Specialization import get_specializations, check_exist_file
+from collecting_data import collect_data
+from find_sim_fum import find_similar
+from config import INFO_TEXT
 
 
-def collect_info():
-    pass
+def start():
+    print("in start")
+    print(INFO_TEXT)
+    for i in range(1, 3):
+        specialization_for_find = input("Ввод: ")
+        if specialization_for_find == "exit":
+            break
+        elif specialization_for_find.isdigit():
+            collect_data(int(specialization_for_find))
+        else:
+            print(find_similar(specialization_for_find.lower()))
 
 
 def main():
-    if check_exist_file():
-        collect_info()
-    else:
-        get_specializations()
-        collect_info()
+    start()
 
 
 if __name__ == "__main__":
 
     import os
 
-    if not os.path.exists("src/data"):
-        os.makedirs("src/data")
+    if not os.path.exists("data"):
+        os.makedirs("data")
     main()
