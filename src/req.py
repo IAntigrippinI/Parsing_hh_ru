@@ -43,6 +43,7 @@ def collect(bs: BeautifulSoup) -> list[dict]:
 
 
 def get_vacancies(id: int):
+    print("Идет сбор данных, подождите")
     try:
         url = START_URL + str(id) + END_URL
         responce = requests.get(url=url, headers={"user-agent": ua.random})
