@@ -1,30 +1,23 @@
 import json
-import requests
-import asyncio
 
-from bs4 import BeautifulSoup
-from pathlib import Path
+from req import get_vacancies
+from FindSimilar import find_similar
 
-from init import ua
-from functions_for_Specialization import get_specializations, check_exist_file
-
-
-def collect_info():
-    pass
+from init import avilable_roles
+from config import INFO_TEXT
 
 
 def main():
-    if check_exist_file():
-        collect_info()
-    else:
-        get_specializations()
-        collect_info()
+    print(INFO_TEXT)
+    while True:
+        inp = input("Ввод: ")
+        if inp == "q":
+            break
+        elif inp.replace(" ", "").isdigit():
+            print(get_vacancies(int(inp.replace(" ", ""))))
+        else:
+            print(find_similar(inp.lower()))
 
 
 if __name__ == "__main__":
-
-    import os
-
-    if not os.path.exists("src/data"):
-        os.makedirs("src/data")
     main()
