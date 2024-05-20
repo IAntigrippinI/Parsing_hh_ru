@@ -1,3 +1,7 @@
-from loadSpec import load_specialization
+from fake_useragent import UserAgent
 
-specializations = load_specialization()
+from get_values import get_roles
+
+
+avilable_roles = get_roles()
+ua = UserAgent()
